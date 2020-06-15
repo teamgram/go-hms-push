@@ -29,7 +29,7 @@ import (
 	"github.com/msalihkarakasli/go-hms-push/push/constant"
 )
 
-type HttpPushClient struct {
+type HMSClient struct {
 	endpoint   string
 	appId      string
 	token      string
@@ -39,7 +39,7 @@ type HttpPushClient struct {
 
 // NewClient creates a instance of the huawei cloud common client
 // It's contained in huawei cloud app and provides service through huawei cloud app
-func NewHttpClient(c *config.Config) (*HttpPushClient, error) {
+func NewHttpClient(c *config.Config) (*HMSClient, error) {
 	if c.AppId == "" {
 		return nil, errors.New("appId can't be empty")
 	}
@@ -63,7 +63,7 @@ func NewHttpClient(c *config.Config) (*HttpPushClient, error) {
 		return nil, errors.New("refresh token fail")
 	}
 
-	return &HttpPushClient{
+	return &HMSClient{
 		endpoint:   c.PushUrl,
 		appId:      c.AppId,
 		token:      token,
@@ -72,7 +72,7 @@ func NewHttpClient(c *config.Config) (*HttpPushClient, error) {
 	}, nil
 }
 
-func (c *HttpPushClient) refreshToken() error {
+func (c *HMSClient) refreshToken() error {
 	if c.authClient == nil {
 		return errors.New("can't refresh token because getting auth client fail")
 	}
@@ -86,7 +86,7 @@ func (c *HttpPushClient) refreshToken() error {
 	return nil
 }
 
-func (c *HttpPushClient) executeApiOperation(ctx context.Context, request *httpclient.PushRequest, responsePointer interface{}) error {
+func (c *HMSClient) executeApiOperation(ctx context.Context, request *httpclient.PushRequest, responsePointer interface{}) error {
 	err := c.sendHttpRequest(ctx, request, responsePointer)
 	if err != nil {
 		return err
@@ -105,7 +105,7 @@ func (c *HttpPushClient) executeApiOperation(ctx context.Context, request *httpc
 	return err
 }
 
-func (c *HttpPushClient) sendHttpRequest(ctx context.Context, request *httpclient.PushRequest, responsePointer interface{}) error {
+func (c *HMSClient) sendHttpRequest(ctx context.Context, request *httpclient.PushRequest, responsePointer interface{}) error {
 	resp, err := c.client.DoHttpRequest(ctx, request)
 	if err != nil {
 		return err
@@ -118,7 +118,7 @@ func (c *HttpPushClient) sendHttpRequest(ctx context.Context, request *httpclien
 }
 
 // if token is timeout or error or other reason, need to refresh token and send again
-func (c *HttpPushClient) isNeedRetry(responsePointer interface{}) (bool, error) {
+func (c *HMSClient) isNeedRetry(responsePointer interface{}) (bool, error) {
 	tokenError, err := isTokenError(responsePointer)
 	if err != nil {
 		return false, err

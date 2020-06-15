@@ -31,7 +31,7 @@ import (
 // SendMessage sends a message to huawei cloud common
 // One of Token, Topic and Condition fields must be invoked in message
 // If validationOnly is set to true, the message can be verified by not sent to users
-func (c *HttpPushClient) SendMessage(ctx context.Context, msgRequest *model.MessageRequest) (*model.MessageResponse, error) {
+func (c *HMSClient) SendMessage(ctx context.Context, msgRequest *model.MessageRequest) (*model.MessageResponse, error) {
 	result := &model.MessageResponse{}
 
 	err := verify.ValidateMessage(msgRequest.Message)
@@ -51,7 +51,7 @@ func (c *HttpPushClient) SendMessage(ctx context.Context, msgRequest *model.Mess
 	return result, err
 }
 
-func (c *HttpPushClient) getSendMsgRequest(msgRequest *model.MessageRequest) (*httpclient.PushRequest, error) {
+func (c *HMSClient) getSendMsgRequest(msgRequest *model.MessageRequest) (*httpclient.PushRequest, error) {
 	body, err := json.Marshal(msgRequest)
 	if err != nil {
 		return nil, err
