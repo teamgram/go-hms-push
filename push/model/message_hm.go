@@ -21,14 +21,14 @@ import (
 )
 
 type AndroidConfig struct {
-	CollapseKey   int                  `json:"collapse_key,omitempty"`
-	Urgency       string               `json:"urgency,omitempty"`
-	Category      string               `json:"category,omitempty"`
-	TTL           string               `json:"ttl,omitempty"`
-	BiTag         string               `json:"bi_tag,omitempty"`
-	FastAppTarget int                  `json:"fast_app_target,omitempty"`
-	Data          string               `json:"data,omitempty"`
-	Notification  *AndroidNotification `json:"notification,omitempty"`
+	CollapseKey   int                    `json:"collapse_key,omitempty"`
+	Urgency       string                 `json:"urgency,omitempty"`
+	Category      string                 `json:"category,omitempty"`
+	TTL           string                 `json:"ttl,omitempty"`
+	BiTag         string                 `json:"bi_tag,omitempty"`
+	FastAppTarget int                    `json:"fast_app_target,omitempty"`
+	Data          map[string]interface{} `json:"data,omitempty"`
+	Notification  *AndroidNotification   `json:"notification,omitempty"`
 }
 
 type AndroidNotification struct {
