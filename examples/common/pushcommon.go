@@ -45,7 +45,7 @@ var conf = &config.Config{
 }
 
 var (
-	pushClient *core.HttpPushClient
+	pushClient *core.HMSClient
 	once       sync.Once
 )
 
@@ -63,7 +63,7 @@ var (
 	TargetTokenArray = []string{TargetToken}
 )
 
-func GetPushClient() *core.HttpPushClient {
+func GetPushClient() *core.HMSClient {
 	once.Do(func() {
 		client, err := core.NewHttpClient(conf)
 		if err != nil {
