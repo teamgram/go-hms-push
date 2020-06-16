@@ -1,9 +1,10 @@
+This project was forked from [github.com/HMS-Core/hms-push-serverdemo-go](https://github.com/HMS-Core/hms-push-serverdemo-go).
+
 # Table of Contents
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Supported Environments](#supported-enviroment)
-* [Sample Code](#sample-code)
 * [License](#license)
 
 
@@ -48,40 +49,6 @@ The following table describes parameters in target.go.
 |TargetCondition|Combination of condition expressions for a message.|
 |TargetToken|Token of a target device, which is obtained from the device.|
 |TargetTokenArray|Tokens of all target devices, which are obtained from the devices.|
-
-# Sample Code
-Download Golang sample code in Downloading Server Sample Code.
-
-1). Send an Android data message.
-You can obtain the initialized MessageRequest instance of the data message using the NewTransparentMsgRequest method in the push/model package.
-> Code location: examples/send_data_message/main.go
-    
-2). Send an Android notification message.
-You can obtain the initialized MessageRequest instance of the notification message using the NewNotificationMsgRequest method in the push/model package.
-> Code location: examples/send_notify_message/main.go
-    
-3). Send a message by topic.
-You can send a notification message or data message to a device by topic. Specify the topic after obtaining the MessageRequest instance.
-> Code location: examples/send_topic_message/main.go
-    
-4). Send a message by conditions.
-You can send a notification message or data message to a device by conditions. Specify the conditions after obtaining the MessageRequest instance.
-> Code location: examples/send_condition_message/main.go
-    
-5). Send a message to a Huawei quick app.
-You can send a message to a quick app by setting FastAppTarget.
-> Code location: examples/send_instance_app_message/main.go
-    
-6). Send a message through the APNs agent.
-You can send a message through the APNs agent by setting Apns of the message.
-> Code location: examples/send_apns_message/main.go
-    
-7). Send a message through the WebPush agent.
-You can send a message through the WebPush agent by setting WebPush of the message.
-> Code location: examples/send_webpush_message/main.go
-    
-8). Send a test message.
-> Code location: examples/send_test_message/main.go
 
 # License
 pushkit Go sample is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
