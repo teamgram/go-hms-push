@@ -98,7 +98,7 @@ func NewTransparentMsgRequest() *MessageRequest {
 //developers should set at least on of Message.Token or  Message.Topic or Message.Condition
 func NewNotificationMsgRequest() *MessageRequest {
 	msgRequest := getDefaultMsgRequest()
-	msgRequest.Message.Notification = getDefaultNotification()
+	msgRequest.Message.Notification = nil
 	return msgRequest
 }
 
