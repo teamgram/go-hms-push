@@ -105,9 +105,7 @@ func NewNotificationMsgRequest() *MessageRequest {
 func getDefaultMsgRequest() *MessageRequest {
 	return &MessageRequest{
 		ValidateOnly: false,
-		Message: &Message{
-			Data: "This is a transparent message data",
-		},
+		Message:      &Message{},
 	}
 }
 
@@ -124,9 +122,9 @@ func getDefaultApnsPayload() map[string]interface{} {
 	payLoad := make(map[string]interface{}, 0)
 	aps := &Aps{
 		Alert: &AlertDictionary{
-			Title: "title",
-			Body:  "apns body",
-			TitleLocKey : "PLAY",
+			Title:       "title",
+			Body:        "apns body",
+			TitleLocKey: "PLAY",
 		},
 		Badge: 5,
 	}

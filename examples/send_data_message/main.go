@@ -64,6 +64,8 @@ func getDataMsgRequest() (*model.MessageRequest, error) {
 	msgRequest.Message.Android = model.GetDefaultAndroid()
 	msgRequest.Message.Token = common.TargetTokenArray
 
+	msgRequest.Message.Data = "{\"userName/\": /\"noob/\"}"
+
 	b, err := json.Marshal(msgRequest)
 	if err != nil {
 		fmt.Printf("Failed to marshal the default message! Error is %s\n", err.Error())
