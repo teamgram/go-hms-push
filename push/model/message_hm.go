@@ -32,40 +32,40 @@ type AndroidConfig struct {
 }
 
 type AndroidNotification struct {
-	Title                 string                 `json:"title,omitempty"`
-	Body                  string                 `json:"body,omitempty"`
-	Icon                  string                 `json:"icon,omitempty"`
-	Color                 string                 `json:"color,omitempty"`
-	Sound                 string                 `json:"sound,omitempty"`
-	DefaultSound          bool                   `json:"default_sound,omitempty"`
-	Tag                   string                 `json:"tag,omitempty"`
-	ClickAction           *ClickAction           `json:"click_action,omitempty"`
-	BodyLocKey            string                 `json:"body_loc_key,omitempty"`
-	BodyLocArgs           []string               `json:"body_loc_args,omitempty"`
-	TitleLocKey           string                 `json:"title_loc_key,omitempty"`
-	TitleLocArgs          []string               `json:"title_loc_args,omitempty"`
-	MultiLangKey          map[string]interface{} `json:"multi_lang_key,omitempty"`
-	ChannelId             string                 `json:"channel_id,omitempty"`
-	NotifySummary         string                 `json:"notify_summary,omitempty"`
-	Image                 string                 `json:"image,omitempty"`
-	Style                 int                    `json:"style,omitempty"`
-	BigTitle              string                 `json:"big_title,omitempty"`
-	BigBody               string                 `json:"big_body,omitempty"`
+	Title         string                 `json:"title,omitempty"`
+	Body          string                 `json:"body,omitempty"`
+	Icon          string                 `json:"icon,omitempty"`
+	Color         string                 `json:"color,omitempty"`
+	Sound         string                 `json:"sound,omitempty"`
+	DefaultSound  bool                   `json:"default_sound,omitempty"`
+	Tag           string                 `json:"tag,omitempty"`
+	ClickAction   *ClickAction           `json:"click_action,omitempty"`
+	BodyLocKey    string                 `json:"body_loc_key,omitempty"`
+	BodyLocArgs   []string               `json:"body_loc_args,omitempty"`
+	TitleLocKey   string                 `json:"title_loc_key,omitempty"`
+	TitleLocArgs  []string               `json:"title_loc_args,omitempty"`
+	MultiLangKey  map[string]interface{} `json:"multi_lang_key,omitempty"`
+	ChannelId     string                 `json:"channel_id,omitempty"`
+	NotifySummary string                 `json:"notify_summary,omitempty"`
+	Image         string                 `json:"image,omitempty"`
+	Style         int                    `json:"style,omitempty"`
+	BigTitle      string                 `json:"big_title,omitempty"`
+	BigBody       string                 `json:"big_body,omitempty"`
 
-	AutoClear             int                    `json:"auto_clear,omitempty"`
-	NotifyId             int                `json:"notify_id,omitempty"`
-	Group                string             `json:"group,omitempty"`
-	Badge                *BadgeNotification `json:"badge,omitempty,omitempty"`
-	Ticker              string         `json:"ticker,omitempty"`
-	AutoCancel         bool           `json:"auto_cancel,omitempty"`
-	when                string         `json:"when,omitempty"`
-	Importance          string         `json:"importance,omitempty"`
-	UseDefaultVibrate bool           `json:"use_default_vibrate,omitempty"`
-	UseDefaultLight   bool           `json:"use_default_light,omitempty"`
-	VibrateConfig      []string       `json:"vibrate_config,omitempty"`
-	Visibility          string         `json:"visibility,omitempty"`
-	LightSettings       *LightSettings `json:"light_settings,omitempty"`
-	ForegroundShow      bool           `json:"foreground_show,omitempty"`
+	AutoClear         int                `json:"auto_clear,omitempty"`
+	NotifyId          int                `json:"notify_id,omitempty"`
+	Group             string             `json:"group,omitempty"`
+	Badge             *BadgeNotification `json:"badge,omitempty,omitempty"`
+	Ticker            string             `json:"ticker,omitempty"`
+	AutoCancel        bool               `json:"auto_cancel,omitempty"`
+	when              string             `json:"when,omitempty"`
+	Importance        string             `json:"importance,omitempty"`
+	UseDefaultVibrate bool               `json:"use_default_vibrate,omitempty"`
+	UseDefaultLight   bool               `json:"use_default_light,omitempty"`
+	VibrateConfig     []string           `json:"vibrate_config,omitempty"`
+	Visibility        string             `json:"visibility,omitempty"`
+	LightSettings     *LightSettings     `json:"light_settings,omitempty"`
+	ForegroundShow    bool               `json:"foreground_show,omitempty"`
 }
 
 type ClickAction struct {
@@ -108,7 +108,7 @@ func GetDefaultAndroidNotification() *AndroidNotification {
 	notification := &AndroidNotification{
 		DefaultSound: true,
 		Importance:   constant.NotificationPriorityDefault,
-		ClickAction:  getDefaultClickAction(),
+		ClickAction:  GetDefaultClickAction(),
 	}
 
 	notification.UseDefaultVibrate = true
@@ -121,7 +121,7 @@ func GetDefaultAndroidNotification() *AndroidNotification {
 	return notification
 }
 
-func getDefaultClickAction() *ClickAction {
+func GetDefaultClickAction() *ClickAction {
 	return &ClickAction{
 		Type:   constant.TypeIntentOrAction,
 		Action: "Action",
