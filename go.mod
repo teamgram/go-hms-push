@@ -1,3 +1,3 @@
-module github.com/stefrerichs/go-hms-push
+module github.com/msalihkarakasli/go-hms-push
 
 go 1.14
