@@ -61,10 +61,18 @@ func (c *HMSClient) getSendMsgRequest(msgRequest *model.MessageRequest) (*httpcl
 		Method: http.MethodPost,
 		URL:    fmt.Sprintf(constant.SendMessageFmt, c.endpoint, c.appId),
 		Body:   body,
-		Header: []httpclient.HTTPOption{
-			httpclient.SetHeader("Content-Type", "application/json;charset=utf-8"),
-			httpclient.SetHeader("Authorization", "Bearer "+c.token),
-		},
+		Header: getMsgHeader(c),
 	}
 	return request, nil
+}
+
+func (c *HMSClient) updateHeader(request *httpclient.PushRequest) {
+	request.Header = getMsgHeader(c)
+}
+
+func getMsgHeader(c *HMSClient) []httpclient.HTTPOption {
+	return []httpclient.HTTPOption{
+		httpclient.SetHeader("Content-Type", "application/json;charset=utf-8"),
+		httpclient.SetHeader("Authorization", "Bearer "+c.token),
+	}
 }

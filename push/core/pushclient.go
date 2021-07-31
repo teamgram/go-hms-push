@@ -99,6 +99,7 @@ func (c *HMSClient) executeApiOperation(ctx context.Context, request *httpclient
 	}
 
 	if retry {
+		c.updateHeader(request)
 		err = c.sendHttpRequest(ctx, request, responsePointer)
 		return err
 	}
