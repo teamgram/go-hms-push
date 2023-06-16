@@ -65,15 +65,14 @@ type AndroidNotification struct {
 	VibrateConfig     []string           `json:"vibrate_config,omitempty"`
 	Visibility        string             `json:"visibility,omitempty"`
 	LightSettings     *LightSettings     `json:"light_settings,omitempty"`
-	ForegroundShow    bool               `json:"foreground_show,omitempty"`
+	ForegroundShow    bool               `json:"foreground_show"`
 }
 
 type ClickAction struct {
-	Type         int    `json:"type"` //when the type equals to 1, At least one of intent and action is not empty
-	Intent       string `json:"intent,omitempty"`
-	Action       string `json:"action,omitempty"`
-	Url          string `json:"url,omitempty"`
-	RichResource string `json:"rich_resource,omitempty"`
+	Type   int    `json:"type"` // when the type equals to 1, At least one of intent and action is not empty
+	Intent string `json:"intent,omitempty"`
+	Action string `json:"action,omitempty"`
+	Url    string `json:"url,omitempty"`
 }
 
 type BadgeNotification struct {
