@@ -18,11 +18,13 @@ package httpclient
 
 import (
 	"bytes"
+	"compress/gzip"
 	"context"
 	"crypto/tls"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -106,8 +108,30 @@ func (c *HTTPClient) doHttpRequest(req *PushRequest) (*PushResponse, error) {
 		return nil, err
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
+
+	var (
+		body []byte
+	)
+
+	gzipFlag := false
+	for k, v := range resp.Header {
+		if strings.ToLower(k) == "content-encoding" && strings.ToLower(v[0]) == "gzip" {
+			gzipFlag = true
+		}
+	}
+
+	if gzipFlag {
+		gr, err2 := gzip.NewReader(resp.Body)
+		defer gr.Close()
+		if err2 != nil {
+			return nil, err2
+		}
+		body, err = ioutil.ReadAll(gr)
+	} else {
+		body, err = ioutil.ReadAll(resp.Body)
+	}
+
 	if err != nil {
 		return nil, err
 	}
