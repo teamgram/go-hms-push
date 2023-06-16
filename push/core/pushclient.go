@@ -107,14 +107,14 @@ func (c *HMSClient) executeApiOperation(ctx context.Context, request *httpclient
 }
 
 func (c *HMSClient) sendHttpRequest(ctx context.Context, request *httpclient.PushRequest, responsePointer interface{}) error {
-	request.Debug()
+	// request.Debug()
 
 	resp, err := c.client.DoHttpRequest(ctx, request)
 	if err != nil {
 		return err
 	}
 
-	resp.Debug()
+	// resp.Debug()
 
 	if err = json.Unmarshal(resp.Body, responsePointer); err != nil {
 		return err
