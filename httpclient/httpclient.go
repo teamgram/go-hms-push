@@ -21,6 +21,7 @@ import (
 	"compress/gzip"
 	"context"
 	"crypto/tls"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -39,6 +40,12 @@ type PushResponse struct {
 	Status int
 	Header http.Header
 	Body   []byte
+}
+
+func (m *PushResponse) Debug() {
+	fmt.Println("Status: ", m.Status)
+	fmt.Println("Header: ", m.Header)
+	fmt.Println("Body: ", string(m.Body))
 }
 
 type HTTPRetryConfig struct {

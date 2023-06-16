@@ -112,7 +112,7 @@ func (c *HMSClient) sendHttpRequest(ctx context.Context, request *httpclient.Pus
 		return err
 	}
 
-	fmt.Println("Response: ", resp)
+	resp.Debug()
 
 	if err = json.Unmarshal(resp.Body, responsePointer); err != nil {
 		return err
