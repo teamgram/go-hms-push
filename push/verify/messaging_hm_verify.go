@@ -108,7 +108,7 @@ func validateAndroidNotifyPriority(notification *model.AndroidNotification) erro
 	if notification.Importance != "" &&
 		notification.Importance != constant.NotificationPriorityHigh &&
 		notification.Importance != constant.NotificationPriorityDefault &&
-		notification.Importance != constant.NotificationPriorityLow  {
+		notification.Importance != constant.NotificationPriorityLow {
 		return errors.New("Importance must be 'HIGH', 'NORMAL' or 'LOW'")
 	}
 	return nil

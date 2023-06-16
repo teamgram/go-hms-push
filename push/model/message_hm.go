@@ -69,10 +69,11 @@ type AndroidNotification struct {
 }
 
 type ClickAction struct {
-	Type   int    `json:"type"` // when the type equals to 1, At least one of intent and action is not empty
-	Intent string `json:"intent,omitempty"`
-	Action string `json:"action,omitempty"`
-	Url    string `json:"url,omitempty"`
+	Type         int    `json:"type"` // when the type equals to 1, At least one of intent and action is not empty
+	Intent       string `json:"intent,omitempty"`
+	Action       string `json:"action,omitempty"`
+	Url          string `json:"url,omitempty"`
+	RichResource string `json:"rich_resource,omitempty"`
 }
 
 type BadgeNotification struct {
