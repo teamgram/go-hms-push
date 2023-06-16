@@ -36,6 +36,12 @@ type PushRequest struct {
 	Header []HTTPOption
 }
 
+func (r *PushRequest) Debug() {
+	fmt.Println("Method: ", r.Method)
+	fmt.Println("URL: ", r.URL)
+	fmt.Println("Body: ", string(r.Body))
+}
+
 type PushResponse struct {
 	Status int
 	Header http.Header

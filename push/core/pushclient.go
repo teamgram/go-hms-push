@@ -107,6 +107,8 @@ func (c *HMSClient) executeApiOperation(ctx context.Context, request *httpclient
 }
 
 func (c *HMSClient) sendHttpRequest(ctx context.Context, request *httpclient.PushRequest, responsePointer interface{}) error {
+	request.Debug()
+
 	resp, err := c.client.DoHttpRequest(ctx, request)
 	if err != nil {
 		return err
