@@ -21,11 +21,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/msalihkarakasli/go-hms-push/push/authention"
-	"github.com/msalihkarakasli/go-hms-push/push/config"
 	"reflect"
 
 	"github.com/msalihkarakasli/go-hms-push/httpclient"
+	"github.com/msalihkarakasli/go-hms-push/push/authention"
+	"github.com/msalihkarakasli/go-hms-push/push/config"
 	"github.com/msalihkarakasli/go-hms-push/push/constant"
 )
 
@@ -37,7 +37,7 @@ type HMSClient struct {
 	client     *httpclient.HTTPClient
 }
 
-// NewClient creates a instance of the huawei cloud common client
+// NewHttpClient creates a instance of the huawei cloud common client
 // It's contained in huawei cloud app and provides service through huawei cloud app
 func NewHttpClient(c *config.Config) (*HMSClient, error) {
 	if c.AppId == "" {
@@ -111,6 +111,8 @@ func (c *HMSClient) sendHttpRequest(ctx context.Context, request *httpclient.Pus
 	if err != nil {
 		return err
 	}
+
+	fmt.Println("Response: ", resp)
 
 	if err = json.Unmarshal(resp.Body, responsePointer); err != nil {
 		return err
