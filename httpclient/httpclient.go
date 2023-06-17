@@ -18,14 +18,12 @@ package httpclient
 
 import (
 	"bytes"
-	"compress/gzip"
 	"context"
 	"crypto/tls"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
-	"strings"
 	"time"
 )
 
@@ -36,10 +34,8 @@ type PushRequest struct {
 	Header []HTTPOption
 }
 
-func (r *PushRequest) Debug() {
-	fmt.Println("Method: ", r.Method)
-	fmt.Println("URL: ", r.URL)
-	fmt.Println("Body: ", string(r.Body))
+func (r *PushRequest) DebugString() string {
+	return fmt.Sprintf("{Method: %s, URL: %s, Body: %s}", r.Method, r.URL, string(r.Body))
 }
 
 type PushResponse struct {
@@ -48,10 +44,8 @@ type PushResponse struct {
 	Body   []byte
 }
 
-func (m *PushResponse) Debug() {
-	fmt.Println("Status: ", m.Status)
-	fmt.Println("Header: ", m.Header)
-	fmt.Println("Body: ", string(m.Body))
+func (m *PushResponse) DebugString() string {
+	return fmt.Sprintf("Status: %d, Header: %s, Body: %s", m.Status, m.Header, string(m.Body))
 }
 
 type HTTPRetryConfig struct {
@@ -121,30 +115,8 @@ func (c *HTTPClient) doHttpRequest(req *PushRequest) (*PushResponse, error) {
 		return nil, err
 	}
 
+	body, err := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
-
-	var (
-		body []byte
-	)
-
-	gzipFlag := false
-	for k, v := range resp.Header {
-		if strings.ToLower(k) == "content-encoding" && strings.ToLower(v[0]) == "gzip" {
-			gzipFlag = true
-		}
-	}
-
-	if gzipFlag {
-		gr, err2 := gzip.NewReader(resp.Body)
-		defer gr.Close()
-		if err2 != nil {
-			return nil, err2
-		}
-		body, err = ioutil.ReadAll(gr)
-	} else {
-		body, err = ioutil.ReadAll(resp.Body)
-	}
-
 	if err != nil {
 		return nil, err
 	}

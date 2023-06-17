@@ -17,29 +17,29 @@ Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
 package constant
 
 const (
-	// unspecified visibility
+	// VisibilityUnspecified unspecified visibility
 	VisibilityUnspecified = "VISIBILITY_UNSPECIFIED"
-	// private visibility
+	// VisibilityPrivate private visibility
 	VisibilityPrivate = "PRIVATE"
-	// public visibility
+	// VisibilityPublic public visibility
 	VisibilityPublic = "PUBLIC"
-	// secret visibility
+	// VisibilitySecret secret visibility
 	VisibilitySecret = "SECRET"
 )
 
 const (
-	// high priority
+	// DeliveryPriorityHigh high priority
 	DeliveryPriorityHigh = "HIGH"
-	// normal priority
+	// DeliveryPriorityNormal normal priority
 	DeliveryPriorityNormal = "NORMAL"
 )
 
 const (
-	// high priority
+	// NotificationPriorityHigh high priority
 	NotificationPriorityHigh = "HIGH"
-	// default priority
+	// NotificationPriorityDefault default priority
 	NotificationPriorityDefault = "NORMAL"
-	// low priority
+	// NotificationPriorityLow low priority
 	NotificationPriorityLow = "LOW"
 )
 

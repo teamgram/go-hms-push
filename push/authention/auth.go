@@ -42,7 +42,7 @@ type TokenMsg struct {
 	ErrorDescription string `json:"error_description"`
 }
 
-// NewClient creates a instance of the huawei cloud auth client
+// NewAuthClient creates a instance of the huawei cloud auth client
 // It's contained in huawei cloud app and provides service through huawei cloud app
 // If AuthUrl is null using default auth url address
 func NewAuthClient(conf *config.Config) (*AuthClient, error) {
