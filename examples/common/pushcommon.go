@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/msalihkarakasli/go-hms-push/push/config"
-	"github.com/msalihkarakasli/go-hms-push/push/core"
+	"github.com/teamgram/go-hms-push/push/config"
+	"github.com/teamgram/go-hms-push/push/core"
 )
 
 const (

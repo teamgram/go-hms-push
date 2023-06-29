@@ -17,7 +17,7 @@ Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
 package model
 
 import (
-	"github.com/msalihkarakasli/go-hms-push/push/constant"
+	"github.com/teamgram/go-hms-push/push/constant"
 )
 
 type AndroidConfig struct {

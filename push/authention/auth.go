@@ -23,8 +23,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/msalihkarakasli/go-hms-push/httpclient"
-	"github.com/msalihkarakasli/go-hms-push/push/config"
+	"github.com/teamgram/go-hms-push/httpclient"
+	"github.com/teamgram/go-hms-push/push/config"
 )
 
 type AuthClient struct {
